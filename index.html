@@ -24,6 +24,31 @@
       overflow: hidden;
     }
 
+    /* --- Loading Spinner --- */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .loading-spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top: 4px solid #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     /* --- Blurred Overlay --- */
     .blur-overlay {
       position: fixed;
@@ -186,9 +211,14 @@
 </head>
 <body>
 
+  <!-- Loading Spinner -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+  </div>
+
   <!-- Blurred Overlay with Message -->
-  <div class="blur-overlay" id="blurOverlay">
-    <div class="badge" onclick="document.getElementById('blurOverlay').style.display = 'none';">
+  <div class="blur-overlay" id="blurOverlay" onclick="document.getElementById('blurOverlay').style.display = 'none'; document.getElementById('loadingOverlay').style.display = 'none'; document.querySelector('.login-container').style.opacity = 1; document.querySelector('.login-container').style.transform = 'translateY(0)';">
+    <div class="badge">
       <span class="title">Secured File</span>
       <span class="subtitle">Sign in to view the file</span>
     </div>
@@ -204,7 +234,6 @@
       <label for="password">Password</label>
       <input type="password" id="password" placeholder="Enter your password" required />
 
-
       <!-- Error message -->
       <div id="error-msg" class="error-msg">Invalid login details</div>
 
@@ -213,7 +242,15 @@
     </form>
   </div>
 
- <!-- ✅ Your JavaScript -->
+  <!-- ✅ Your JavaScript -->
   <script src="script.js"></script>
+
+  <!-- Remove the loading spinner after 3 seconds -->
+  <script>
+    setTimeout(function() {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }, 3000);
+  </script>
+
 </body>
 </html>
