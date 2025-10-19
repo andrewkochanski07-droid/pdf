@@ -1,4 +1,4 @@
-/* Reset & Base Styles */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -8,23 +8,9 @@
 body, html {
   height: 100%;
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
 }
 
-/* Background Blurred Image */
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://i.ibb.co/jvBRfLqJ/Credit-Note-CECN2501001.jpg') no-repeat center center fixed;
-  background-size: cover;
-  filter: blur(6px);
-  z-index: -1;
-}
-
-/* Background iframe if used */
+/* Background */
 #bg-frame {
   position: fixed;
   top: 0;
@@ -34,124 +20,36 @@ body, html {
   height: 100%;
   z-index: -1;
   pointer-events: none;
-  filter: blur(6px);
+  filter: blur(8px);
 }
 
-/* Header Bars (Optional Use) */
-.header-bar {
-  display: flex;
-  height: 36px;
-  font-size: 14px;
-}
-
-.header-left {
-  background: #c23e2b;
-  color: white;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  padding: 0 10px;
-}
-
-.header-left img {
-  height: 20px;
-  margin-right: 8px;
-}
-
-.header-middle {
-  background: #000;
-  flex-grow: 1;
-}
-
-.header-right {
-  background: #f3f3f3;
-  color: #444;
-  display: flex;
-  align-items: center;
-  padding: 0 20px;
-}
-
-.header-right div {
-  padding: 0 10px;
-}
-
-.header-right div:first-child {
-  border-right: 1px solid #ccc;
-}
-
-.topbar-2 {
-  background: #fff;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 8px 20px;
-  border-bottom: 1px solid #ccc;
-  font-size: 13px;
-}
-
-.topbar-2 .menu-right {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  color: #333;
-}
-
-.topbar-2 .edit-button {
-  background-color: #c23e2b;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 3px;
-  font-weight: bold;
-  font-size: 13px;
-  cursor: default;
-}
-
-/* Centered Login Container */
+/* Overlay container */
 .overlay {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
   padding: 20px;
-  position: relative;
-  z-index: 1;
 }
 
 /* Login Box */
 .login-box {
   background: white;
-  padding: 25px 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  max-width: 400px;
+  padding: 30px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
   width: 100%;
-  text-align: left;
-  z-index: 2;
+  max-width: 400px;
+  text-align: center;
 }
 
-/* Login Title and Logo */
-.login-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
+/* Logo */
+#logo {
+  width: 60px;
+  margin-bottom: 20px;
 }
 
-.login-title img {
-  height: 24px;
-  margin-right: 8px;
-}
-
-.login-title span {
-  font-size: 16px;
-  color: #333;
-  background-color: #e0e0e0;
-  padding: 3px 10px;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-/* Input Groups with Icons */
+/* Input Group */
 .input-group {
   position: relative;
   margin-bottom: 15px;
@@ -168,89 +66,53 @@ body, html {
 .input-group input {
   width: 100%;
   padding: 10px 10px 10px 35px;
-  border-radius: 4px;
   border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: 14px;
 }
 
-input:focus {
-  outline: none;
+.input-group input:focus {
   border-color: #c23e2b;
+  outline: none;
 }
 
-/* Email Provider Logos */
-.email-icons,
-.email-providers {
-  margin: 15px 0;
-  text-align: center;
-}
-
-.email-icons img,
-.email-providers img {
-  height: 28px;
-  margin: 6px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  opacity: 0.85;
-  cursor: pointer;
-}
-
-.email-icons img:hover,
-.email-providers img:hover {
-  transform: scale(1.1);
-  opacity: 1;
-}
-
-/* Checkbox / Remember Me */
-.checkbox {
-  font-size: 12px;
-  text-align: left;
-  margin-bottom: 15px;
-}
-
-.checkbox label {
-  display: flex;
-  align-items: flex-start;
-}
-
-.checkbox input {
-  margin-right: 6px;
-  margin-top: 2px;
-}
-
-.stay-bold {
-  font-weight: bold;
-}
-
-.stay-faint {
-  font-weight: normal;
-  color: #888;
-  font-size: 10px;
-}
-
-/* Login Button */
+/* Button */
 .btn {
   background-color: #c23e2b;
   color: white;
-  padding: 8px 16px;
+  padding: 10px;
   width: 100%;
-  display: inline-block;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
   font-weight: bold;
+  font-size: 14px;
   margin-top: 10px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #a83224;
+  background-color: #a62f1f;
 }
 
-/* Disclaimer Text */
-.disclaimer {
-  font-size: 11px;
-  margin-top: 15px;
-  color: #888;
-  text-align: center;
+/* Email Provider Logos */
+.email-providers {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.email-providers img {
+  height: 32px;
+  width: auto;
+  opacity: 0.85;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.email-providers img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  cursor: pointer;
 }
