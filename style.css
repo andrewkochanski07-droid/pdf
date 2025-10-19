@@ -1,3 +1,4 @@
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +8,10 @@
 body, html {
   height: 100%;
   font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
+/* Background Blurred Image */
 .background {
   position: fixed;
   top: 0;
@@ -21,6 +24,20 @@ body, html {
   z-index: -1;
 }
 
+/* Background iframe if used */
+#bg-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(6px);
+}
+
+/* Header Bars (Optional Use) */
 .header-bar {
   display: flex;
   height: 36px;
@@ -39,7 +56,6 @@ body, html {
 .header-left img {
   height: 20px;
   margin-right: 8px;
-  vertical-align: middle;
 }
 
 .header-middle {
@@ -90,25 +106,30 @@ body, html {
   cursor: default;
 }
 
-.container {
-  position: relative;
+/* Centered Login Container */
+.overlay {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 96px);
+  height: 100%;
+  padding: 20px;
+  position: relative;
   z-index: 1;
 }
 
+/* Login Box */
 .login-box {
   background: white;
   padding: 25px 20px;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  max-width: 380px;
+  max-width: 400px;
   width: 100%;
   text-align: left;
+  z-index: 2;
 }
 
+/* Login Title and Logo */
 .login-title {
   display: flex;
   align-items: center;
@@ -130,35 +151,56 @@ body, html {
   font-weight: bold;
 }
 
-.identity-header {
-  display: flex;
-  align-items: center;
-  margin: 10px 0 4px;
+/* Input Groups with Icons */
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
 }
 
-.identity-header img {
-  height: 16px;
-  margin-right: 6px;
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
 }
 
-.identity-header strong {
+.input-group input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
   font-size: 14px;
 }
 
-.login-box p {
-  font-size: 13px;
-  color: #333;
-  margin: 6px 0 12px;
+input:focus {
+  outline: none;
+  border-color: #c23e2b;
 }
 
-input[type="text"], input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+/* Email Provider Logos */
+.email-icons,
+.email-providers {
+  margin: 15px 0;
+  text-align: center;
 }
 
+.email-icons img,
+.email-providers img {
+  height: 28px;
+  margin: 6px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.email-icons img:hover,
+.email-providers img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Checkbox / Remember Me */
 .checkbox {
   font-size: 12px;
   text-align: left;
@@ -175,10 +217,6 @@ input[type="text"], input[type="password"] {
   margin-top: 2px;
 }
 
-.checkbox span {
-  display: inline-block;
-}
-
 .stay-bold {
   font-weight: bold;
 }
@@ -189,37 +227,30 @@ input[type="text"], input[type="password"] {
   font-size: 10px;
 }
 
+/* Login Button */
 .btn {
   background-color: #c23e2b;
   color: white;
-  padding: 6px 12px;
-  width: auto;
+  padding: 8px 16px;
+  width: 100%;
   display: inline-block;
   border: none;
   border-radius: 4px;
-  cursor: not-allowed;
-  margin: 5px auto 0;
-  font-size: 13px;
+  cursor: pointer;
+  font-size: 14px;
   font-weight: bold;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.email-icons {
-  margin: 10px 0 15px;
-  text-align: center;
+.btn:hover {
+  background-color: #a83224;
 }
 
-.email-icons img {
-  height: 22px;
-  margin: 4px;
-}
-
+/* Disclaimer Text */
 .disclaimer {
   font-size: 11px;
   margin-top: 15px;
   color: #888;
-  text-align: center;
-}
-
-.btn-wrapper {
   text-align: center;
 }
